@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="text-center mb-5">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ url('/home') }}" class="btn btn-primary shadow animated zoomIn delay-2s">Home</a>
+            <a href="{{ url('/resources') }}" class="btn btn-info shadow animated zoomIn delay-3s">Resources</a>
+            <a href="{{ url('/gamification') }}" class="btn btn-warning shadow animated zoomIn delay-4s">Gamification</a>
+            <a href="{{ url('/contact') }}" class="btn btn-success shadow animated zoomIn delay-5s">Contact</a>
+            <a href="{{ url('/profile') }}" class="btn btn-secondary shadow animated zoomIn delay-6s">Profile</a>
+        </div>
+    </div>
 <div class="container py-5">
     <div class="text-center my-4">
         <h1 class="display-4">Learning Resources</h1>

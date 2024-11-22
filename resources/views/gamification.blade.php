@@ -2,162 +2,110 @@
 
 @section('content')
 
+<!-- Navigation Bar -->
+<div class="text-center mb-5">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ url('/home') }}" class="btn btn-primary shadow animated zoomIn delay-2s">Home</a>
+            <a href="{{ url('/resources') }}" class="btn btn-info shadow animated zoomIn delay-3s">Resources</a>
+            <a href="{{ url('/gamification') }}" class="btn btn-warning shadow animated zoomIn delay-4s">Gamification</a>
+            <a href="{{ url('/contact') }}" class="btn btn-success shadow animated zoomIn delay-5s">Contact</a>
+            <a href="{{ url('/profile') }}" class="btn btn-secondary shadow animated zoomIn delay-6s">Profile</a>
+        </div>
+    </div>
+
 <!-- Gamification Section -->
-<section class="py-16 bg-blue-50 text-center">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-8">Play a Game</h2>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<section id="game-section" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Interactive Learning Games</h2>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         @foreach ($games as $game)
-        <div class="game-card bg-gradient-to-r from-{{ $game['color_start'] }} to-{{ $game['color_end'] }} p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-500 ease-in-out">
-            <h3 class="text-2xl font-bold text-white drop-shadow-md mb-4">{{ $game['title'] }}</h3>
-            <p class="text-white text-lg mb-4">{{ $game['description'] }}</p>
-            <a href="{{ route($game['route_name']) }}" class="bg-white text-{{ $game['button_color'] }} py-2 px-6 rounded-full transition-all duration-300 transform hover:bg-{{ $game['button_color'] }} hover:text-white hover:scale-110">Play {{ $game['title'] }}</a>
+        <div class="game-card relative bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <div class="absolute -top-4 right-4 w-12 h-12 bg-gradient-to-r from-{{ $game['color_start'] }} to-{{ $game['color_end'] }} rounded-full flex items-center justify-center text-white text-xl font-bold shadow-md">
+                🎮
+            </div>
+            <h3 class="text-2xl font-bold text-gray-700 mb-4">{{ $game['title'] }}</h3>
+            <p class="text-gray-600 mb-6">{{ $game['description'] }}</p>
+            <a href="{{ route($game['route_name']) }}" class="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition">
+                Play Now
+            </a>
         </div>
         @endforeach
     </div>
 </section>
 
-<!-- Progress Bar Section -->
-<section class="py-8 bg-white text-center">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Learning Progress</h2>
-    <div class="max-w-md mx-auto">
-        <div class="bg-gray-200 rounded-full h-4">
-            <div class="bg-blue-600 h-4 rounded-full progress-bar" style="width: 0%; animation: progressBarAnimation 2s forwards;"></div>
+<!-- Interactive Features Section -->
+<section id="features-section" class="py-16 bg-white text-center">
+    <h2 class="text-4xl font-bold text-gray-800 mb-8">Boost Your Learning with Fun</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="feature-card bg-gradient-to-br from-purple-600 to-pink-500 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <h3 class="text-2xl font-bold mb-4">Daily Challenges</h3>
+            <p class="text-lg mb-6">Complete small challenges every day to win badges and boost your skills.</p>
+            <button class="bg-white text-purple-700 py-2 px-4 rounded-lg hover:bg-purple-200 transition">
+                Start Challenges
+            </button>
         </div>
-        <p class="text-gray-600 mt-2 text-lg">You are <span class="font-semibold text-blue-600">{{ $progress }}%</span> through your current course!</p>
+        <!-- Feature 2 -->
+        <div class="feature-card bg-gradient-to-br from-blue-500 to-teal-400 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <h3 class="text-2xl font-bold mb-4">Team Quizzes</h3>
+            <p class="text-lg mb-6">Join a team and compete with others in real-time quizzes.</p>
+            <button class="bg-white text-blue-700 py-2 px-4 rounded-lg hover:bg-blue-200 transition">
+                Join a Team
+            </button>
+        </div>
+        <!-- Feature 3 -->
+        <div class="feature-card bg-gradient-to-br from-green-500 to-yellow-400 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <h3 class="text-2xl font-bold mb-4">Flashcard Practice</h3>
+            <p class="text-lg mb-6">Improve memory by practicing topics with interactive flashcards.</p>
+            <button class="bg-white text-green-700 py-2 px-4 rounded-lg hover:bg-green-200 transition">
+                Practice Now
+            </button>
+        </div>
+        <!-- Feature 4 -->
+        <div class="feature-card bg-gradient-to-br from-indigo-600 to-cyan-500 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <h3 class="text-2xl font-bold mb-4">Interactive Case Studies</h3>
+            <p class="text-lg mb-6">Work through real-world scenarios and learn problem-solving skills.</p>
+            <button class="bg-white text-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-200 transition">
+                Explore Cases
+            </button>
+        </div>
+        <!-- Feature 5 -->
+        <div class="feature-card bg-gradient-to-br from-red-500 to-orange-400 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+            <h3 class="text-2xl font-bold mb-4">Learning Streak</h3>
+            <p class="text-lg mb-6">Maintain a daily streak to unlock exclusive rewards and content.</p>
+            <button class="bg-white text-red-700 py-2 px-4 rounded-lg hover:bg-red-200 transition">
+                Keep Streak
+            </button>
+        </div>
     </div>
 </section>
 
-<!-- Leaderboard Section -->
-<section class="py-16 bg-white text-center">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-8">Top Performers</h2>
-    <div class="max-w-4xl mx-auto">
-        <table class="min-w-full bg-gray-50 shadow-lg rounded-lg">
-            <thead class="bg-blue-500 text-white">
-                <tr>
-                    <th class="py-3 px-6 text-sm font-semibold text-center">Rank</th>
-                    <th class="py-3 px-6 text-sm font-semibold text-center">User</th>
-                    <th class="py-3 px-6 text-sm font-semibold text-center">Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($topPerformers as $performer)
-                <tr class="border-b hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                    <td class="py-4 px-6 text-center">{{ $performer['rank'] }}</td>
-                    <td class="py-4 px-6 text-center">{{ $performer['name'] }}</td>
-                    <td class="py-4 px-6 text-center">{{ $performer['points'] }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+<!-- Progress Section -->
+<section id="progress-section" class="py-16 bg-gradient-to-r from-gray-50 to-gray-100 text-center">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6">Track Your Progress</h2>
+    <div class="max-w-md mx-auto">
+        <div class="bg-gray-200 rounded-full h-6">
+            <div class="bg-blue-600 h-6 rounded-full progress-bar" style="width: {{ $progress }}%;"></div>
+        </div>
+        <p class="text-gray-700 mt-4 text-lg">You have completed <span class="font-semibold text-blue-600">{{ $progress }}%</span> of your learning goals!</p>
     </div>
 </section>
 
 @endsection
 
 <style>
-/* Keyframe for Progress Bar Animation */
-@keyframes progressBarAnimation {
-    from {
-        width: 0%;
-    }
-    to {
-        width: {{ $progress }}%;
-    }
-}
-
 .progress-bar {
-    animation-duration: 2s;
+    transition: width 1.5s ease-in-out;
 }
 
-/* Custom Shadow for Card Hover */
 .game-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* Add styling for the layout */
-body {
-    font-family: 'Poppins', sans-serif;
+.feature-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-h2, h3 {
-    line-height: 1.4;
-}
-
-/* Ensure smooth scaling of the game cards */
-.game-card {
-    transition: all 0.3s ease-in-out;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-/* Increase scaling on hover */
-.game-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Adjust spacing for text and button elements */
-.game-card h3 {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-.game-card a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 50px;
-    background-color: #fff;
-    color: #2d3748;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.game-card a:hover {
-    background-color: #e2e8f0;
-    transform: scale(1.1);
-}
-
-.game-card .text-gray-600 {
-    transition: color 0.3s ease;
-}
-
-.game-card:hover .text-gray-600 {
-    color: #4B5563; /* Darker gray */
-}
-
-/* Table styling */
-table {
-    width: 100%;
-}
-
-th {
-    text-align: center;
-}
-
-td {
-    text-align: center;
-}
-
-/* Grid Layout for Game Cards */
-@media (min-width: 640px) {
-    .game-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-}
-
-@media (min-width: 1024px) {
-    .game-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+section {
+    padding-bottom: 40px; /* Ensure sections are spaced apart */
 }
 </style>

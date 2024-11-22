@@ -29,26 +29,21 @@ class FirebaseAuthController extends Controller
     {
         $idToken = $request->input('idToken');
 
-        // Validate the ID token
         if (!$idToken) {
             return response()->json(['error' => 'ID token is required'], 400);
         }
 
         try {
-            // Verify the Firebase ID token
             $verifiedIdToken = $this->firebaseAuth->verifyIdToken($idToken);
 
-            // Extract user information from the verified token
             $uid = $verifiedIdToken->claims()->get('sub');
             $email = $verifiedIdToken->claims()->get('email');
-            $name = $verifiedIdToken->claims()->get('name') ?? 'User'; // Default to 'User' if no name is provided
+            $name = $verifiedIdToken->claims()->get('name') ?? 'User';
 
-            // Ensure email is available
             if (!$email) {
                 return response()->json(['error' => 'Email not found in the ID token'], 400);
             }
 
-            // Check if the user exists in the database
             $user = User::firstOrCreate(
                 ['email' => $email],
                 [
@@ -57,10 +52,8 @@ class FirebaseAuthController extends Controller
                 ]
             );
 
-            // Log the user in
             Auth::login($user);
 
-            // Return success response
             return response()->json([
                 'message' => 'User successfully authenticated',
                 'user' => $user,

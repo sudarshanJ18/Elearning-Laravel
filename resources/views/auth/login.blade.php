@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -10,7 +11,6 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <!-- Email Field -->
                         <div class="mb-3">
                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
                             <input
@@ -28,7 +28,6 @@
                             @enderror
                         </div>
 
-                        <!-- Password Field -->
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ __('Password') }}</label>
                             <input
@@ -47,6 +46,14 @@
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button>
                     </form>
+
+                    <hr>
+
+                    <!-- Register Navigation -->
+                    <div class="text-center mt-3">
+                        <span>{{ __("Don't have an account?") }}</span>
+                        <a href="{{ route('register') }}" class="text-primary">{{ __('Register here') }}</a>
+                    </div>
 
                     <hr>
 
@@ -127,7 +134,6 @@ async function signInWithProvider(providerName) {
         const user = result.user;
         const idToken = await user.getIdToken();
 
-        // Send the ID token to the backend for verification
         const response = await fetch('/firebase-login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -138,14 +144,13 @@ async function signInWithProvider(providerName) {
             throw new Error(await response.text());
         }
 
-        // Redirect to the dashboard after successful login
         window.location.href = '/dashboard';
     } catch (error) {
         console.error('Authentication error:', error);
-        document.getElementById('error').classList.remove('d-none'); // Show error
+        document.getElementById('error').classList.remove('d-none');
         document.getElementById('error').innerText = error.message;
     } finally {
-        document.getElementById('loading').classList.add('d-none'); // Hide loading
+        document.getElementById('loading').classList.add('d-none');
     }
 }
 </script>

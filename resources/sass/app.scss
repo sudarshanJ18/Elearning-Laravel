@@ -5,10 +5,13 @@
 $primary: #007bff;
 $secondary: #6c757d;
 
-@import 'variables';
-
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // Custom Styles
 body {

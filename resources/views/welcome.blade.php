@@ -7,11 +7,11 @@
 
     <title>E-Learning Platform</title>
 
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind CSS -->
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
@@ -39,8 +39,9 @@
                 </div>
                 <div class="ml-10 flex items-baseline space-x-4">
                     <a href="{{ route('login') }}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-lg font-medium">Login</a>
+
                     <a href="{{ route('register') }}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-lg font-medium">Register</a>
-                    <a href="{{ route('contact') }}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-lg font-medium">Contact</a> <!-- Added Contact link -->
+                    <a href="{{ route('contact') }}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
             </div>
                 </div>
             </div>
